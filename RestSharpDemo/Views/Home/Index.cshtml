@@ -1,0 +1,38 @@
+﻿@model List<RestSharpDemo.Models.member>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<h2>List of Members</h2> 
+
+<div class="row container">
+    @Html.ActionLink("Register New Member","Register",null,new { @class = "btn btn-primary" })
+
+    <table class="table table-bordered ta">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Contact</th>
+                <th>Address</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var row in Model)
+            {
+                <tr>
+                    <td>@row.Id</td>
+                    <td>@row.Name</td>
+                    <td>@row.Contact</td>
+                    <td>@row.Address</td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { Id = row.Id }, new { @class = "btn btn-primary" })
+                        @Html.ActionLink("Delete", "Delete", new { Id = row.Id }, new { @class = "btn btn-danger" })
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
